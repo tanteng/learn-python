@@ -20,3 +20,5 @@ else:
         run1()
     if 'run2' == action2:
         run2()
+        
+#用法：在命令行执行脚本，python sys_argv.py run1 run2
