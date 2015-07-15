@@ -11,6 +11,8 @@ print(one)
 all_result = c.fetchall()
 print(all_result)
 
+c.close()  # 关闭连接资源
+
 '''
 ((40, 'Index', '????', 1, '', 1, 1, 2, 0, 0), (39, 'index', '??', 1, '', None, 30, 3, 0, 0), (37, 'resume', '??', 1, '', None, 30, 3, 0, 0), (36, 'forbid', '??', 1, '', None, 30, 3, 0, 0), (3
 5, 'foreverdelete', '??', 1, '', None, 30, 3, 0, 0), (34, 'update', '??', 1, '', None, 30, 3, 0, 0), (33, 'edit', '??', 1, '', None, 30, 3, 0, 0), (32, 'insert', '??', 1, '', None, 30, 3, 0,
