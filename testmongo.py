@@ -7,7 +7,7 @@ import os
 import gridfs
 import sys
 
-client = MongoClient('mongodb://m_user:m_user_027@192.168.5.22:27017/js_send_excel')
+client = MongoClient('mongodb://192.168.6.212:27017/send_excel')
 db = client.js_send_excel
 fs = gridfs.GridFS(db)
 
