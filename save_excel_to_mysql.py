@@ -2,6 +2,7 @@
 import xlrd
 import MySQLdb
 import os
+import logging
 import sys
 
 
@@ -13,6 +14,7 @@ def main(path):
     for file in files:
         save_file(path + '/' + file)
         print(file)
+        logging.info(file)
 
 
 def save_file(file):
@@ -69,13 +71,19 @@ def insert(data):
     db = MySQLdb.connect(host="localhost", user="root", passwd="", db="fahuo", use_unicode=True, charset="utf8")
     c = db.cursor()
 
-    c.executemany(
-        """INSERT INTO `order` VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
-        data)
-    db.commit()
-    db.close()
+    try:
+        c.executemany(
+            """INSERT INTO `order` VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
+            data)
+        db.commit()
+    except Exception as e:
+        logging.info(e)
+        db.close()
+        return False
+    return True
 
 
 if __name__ == "__main__":
-    path = './exceltest'
+    logging.basicConfig(filename='./log.txt', level=logging.DEBUG)
+    path = './excel'
     main(path)
