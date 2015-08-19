@@ -3,6 +3,7 @@ import xlrd
 import MySQLdb
 import os
 import logging
+import shutil
 import sys
 
 
@@ -12,17 +13,21 @@ def main(path):
     """
     files = os.listdir(path)
     for file in files:
-        save_file(path + '/' + file)
+        save_file(path + '/' + file, file)
         print(file)
-        logging.info(file)
 
 
-def save_file(file):
+def save_file(file, filename):
     """
     打开excel文件
     """
-    book = xlrd.open_workbook(file)
-    sheet = book.sheet_by_index(0)
+    try:
+        book = xlrd.open_workbook(file)
+        sheet = book.sheet_by_index(0)
+    except Exception as e:
+        logging.info('错误：{0} 文件：{1}'.format(e, file))
+        shutil.copy2(file, './error' + filename)
+        return False
     row_nums = sheet.nrows
     col_nums = sheet.ncols
 
