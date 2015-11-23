@@ -11,7 +11,7 @@ import webbrowser
 
 # 返回config对象
 conf = configparser.ConfigParser()
-conf.read('./conf/demo.conf')
+conf.read('./conf/demo.conf', 'utf-8')
 
 # 读取配置文件
 def readConf():
