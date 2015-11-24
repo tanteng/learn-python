@@ -1,6 +1,7 @@
 # encoding:utf-8
 
 import redis
+import webbrowser
 
 
 r = redis.StrictRedis(host='localhost', port=6379, db=0)
@@ -25,3 +26,5 @@ r.rpush('list','www.tencent.com')
 
 pop = r.lpop('list')
 print(pop)
+
+webbrowser.open('http://www.tantengvip.com',1)
