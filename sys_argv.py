@@ -22,11 +22,17 @@ def process_command_line(argv):
         add_help_option=None)
     # define options here:
     parser.add_option(      # customized description; put --help last
-        '-h', '--help', action='help',
-        help='Show this help message and exit.')
+        '-h', '--help', action='help', help='Show this help message and exit.'
+    )
     parser.add_option(
-        '-u', '--url', action='store', dest = 'link',
-        help='Open a link.')
+        '-u', '--url', action='store', dest = 'link', help='Open a link.'
+    )
+    parser.add_option(
+        '-v', '--version', action='store_true', help='Show version.'
+    )
+    parser.add_option(
+        '-q', '--quit', action='store_false',help='Quit'
+    )
     settings, args = parser.parse_args(argv)
     # check number of arguments, verify values, etc.:
     if args:
@@ -46,6 +52,10 @@ def run(settings, args):
     if settings.link:
         webbrowser.open(settings.link, 1)
 
+    if settings.version:
+        print('VERSION 1.0')
+
+
 
 if __name__ == '__main__':
     status = main()
@@ -57,6 +67,15 @@ if __name__ == '__main__':
 python sys_argv.py -h
 显示帮助信息
 
+python sys_argv.py -v
+显示版本号
+
 python sys_argv.py -u www.163.com
 用默认浏览器打开你输入的网址
+
+action四种参数：
+help        显示帮助信息
+store       需要参数值
+store_true  不需要参数值，默认True
+store_false 不需要参数值，默认False
 """
