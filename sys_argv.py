@@ -25,7 +25,7 @@ def process_command_line(argv):
         '-h', '--help', action='help',
         help='Show this help message and exit.')
     parser.add_option(
-        '-u', '--url', action='store',
+        '-u', '--url', action='store', dest = 'link',
         help='Open a link.')
     settings, args = parser.parse_args(argv)
     # check number of arguments, verify values, etc.:
@@ -37,13 +37,14 @@ def process_command_line(argv):
 
 def main(argv=None):
     settings, args = process_command_line(argv)
+    print(settings)
     # application code here, like:
     run(settings, args)
     return 0        # success
 
 def run(settings, args):
-    if settings.url:
-        webbrowser.open(settings.url, 1)
+    if settings.link:
+        webbrowser.open(settings.link, 1)
 
 
 if __name__ == '__main__':
