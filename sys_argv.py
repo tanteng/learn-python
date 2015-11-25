@@ -6,6 +6,7 @@
 
 import optparse
 import sys
+import webbrowser
 
 
 def process_command_line(argv):
@@ -23,6 +24,9 @@ def process_command_line(argv):
     parser.add_option(      # customized description; put --help last
         '-h', '--help', action='help',
         help='Show this help message and exit.')
+    parser.add_option(
+        '-u', '--url', action='store',
+        help='Open a link.')
     settings, args = parser.parse_args(argv)
     # check number of arguments, verify values, etc.:
     if args:
@@ -34,9 +38,24 @@ def process_command_line(argv):
 def main(argv=None):
     settings, args = process_command_line(argv)
     # application code here, like:
-    # run(settings, args)
+    run(settings, args)
     return 0        # success
+
+def run(settings, args):
+    if settings.url:
+        webbrowser.open(settings.url, 1)
+
 
 if __name__ == '__main__':
     status = main()
     sys.exit(status)
+
+"""
+命令行功能：
+
+python sys_argv.py -h
+显示帮助信息
+
+python sys_argv.py -u www.163.com
+用默认浏览器打开你输入的网址
+"""
