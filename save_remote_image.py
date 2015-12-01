@@ -21,6 +21,10 @@ def saveRemoteImage():
     下载大文件这样写：
     for chunk in r.iter_content():
         f.write(chunk)
+
+    如果不使用requests模块：
+    import urllib
+    urllib.urlretrieve(url, filename=None, reporthook=None, data=None)
     """
 
 saveRemoteImage()
