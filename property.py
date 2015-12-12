@@ -1,13 +1,19 @@
-__author__ = 'tanteng'
+# -*- coding: utf-8 -*-
 
-class Ver(object):
-    def __init__(self,version):
-        self.version = version
-
+# 属性装饰器
+class Student(object):
     @property
-    def version_no(self):
-        return self.version
+    def score(self):
+        return self._score
 
+    @score.setter
+    def score(self, value):
+        if not isinstance(value,int):
+            raise ValueError('必须输入数字！')
+        if value<0 or value>100:
+            raise ValueError('必须大于0小于100！')
+        self._score = value
 
-ver = Ver('2.0')
-print(ver.version_no)
+s = Student()
+s.score = 101
+print(s.score)
