@@ -3,3 +3,5 @@
 
 学习Python3记录博客：
 http://www.tantengvip.com/category/develop/python3/
+
+注：IDE是PyCharm4.5，Python版本是3.4.3
