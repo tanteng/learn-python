@@ -7,6 +7,7 @@ import webbrowser
 def alias(*args, **kwargs):
     print('args=', args)
     print('kwargs=', kwargs)
+    return
 
 alias(3, 23, 3, 3,a='hello',b=3,c='C')
 
