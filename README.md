@@ -5,3 +5,5 @@
 http://blog.tanteng.me/category/develop/python3/
 
 注：IDE是PyCharm4.5，Python版本是3.4.3
+
+欢迎大家提交好的学习Python3的脚本，我会合并进来！
